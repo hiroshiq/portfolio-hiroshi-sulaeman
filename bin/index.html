@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Web Developer</title>
+  <meta name="description" content="Professional Web Developer Portfolio" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+<!-- =====================
+     SPLASH SCREEN
+     ===================== -->
+<div id="splash" aria-hidden="true">
+  <div class="splash-content">
+    <p>Start Content...</p>
+    <div class="progress-bar">
+      <span></span>
+    </div>
+  </div>
+</div>
+
+<header class="header">
+  <nav class="nav">
+    <span class="logo">Portfolio</span>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <button id="theme-toggle" class="btn" aria-pressed="false">🌓</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- =====================
+       HERO
+       ===================== -->
+  <section class="hero section">
+    <h1>Hiro Ganteng</h1>
+    <h2>Web Developer</h2>
+    <p>I build fast, maintainable web interfaces that solve real problems.</p>
+    <div class="cta">
+      <a href="#projects" class="btn">View Projects</a>
+      <a href="#" class="btn secondary">Download CV</a>
+    </div>
+  </section>
+
+  <!-- =====================
+       ABOUT
+       ===================== -->
+  <section class="about section reveal">
+    <h3>About</h3>
+    <p>
+      I focus on translating complex requirements into clean, usable interfaces.
+      My work prioritizes clarity, performance, and long-term maintainability.
+    </p>
+  </section>
+
+    <!-- =====================
+        SKILLS
+        ===================== -->
+    <section class="skills section reveal">
+    <h2>Skills</h2>
+
+    <div class="skill-tree" aria-label="Skill tree">
+        <svg class="connectors" aria-hidden="true"></svg>
+
+        <!-- CORE -->
+        <div
+        class="node pos-core visible"
+        data-skill="core"
+        data-order="1"
+        tabindex="0">
+        <span class="name">Web Development</span>
+        <span class="lvl">Core</span>
+        </div>
+
+        <!-- FRONT-END -->
+        <div
+        class="node pos-frontend"
+        data-skill="frontend"
+        data-req="core"
+        data-order="2"
+        tabindex="0">
+        <span class="name">Front-End</span>
+        <span class="lvl">Primary</span>
+        </div>
+
+        <div
+        class="node pos-html"
+        data-skill="html"
+        data-req="frontend"
+        data-order="3"
+        tabindex="0">
+        <span class="name">HTML</span>
+        <span class="lvl">Advanced</span>
+        </div>
+
+        <div
+        class="node pos-css"
+        data-skill="css"
+        data-req="frontend"
+        data-order="4"
+        tabindex="0">
+        <span class="name">CSS</span>
+        <span class="lvl">Advanced</span>
+        </div>
+
+        <div
+        class="node pos-js"
+        data-skill="javascript"
+        data-req="frontend"
+        data-order="5"
+        tabindex="0">
+        <span class="name">JavaScript</span>
+        <span class="lvl">Advanced</span>
+        </div>
+
+        <!-- BACK-END -->
+        <div
+        class="node pos-backend"
+        data-skill="backend"
+        data-req="core"
+        data-order="6"
+        tabindex="0">
+        <span class="name">Back-End</span>
+        <span class="lvl">Primary</span>
+        </div>
+
+        <div
+        class="node pos-mysql"
+        data-skill="mysql"
+        data-req="backend"
+        data-order="7"
+        tabindex="0">
+        <span class="name">MySQL</span>
+        <span class="lvl">Intermediate</span>
+        </div>
+
+        <!-- ENGINEERING PRACTICES -->
+        <div
+        class="node pos-engineering"
+        data-skill="practices"
+        data-req="core"
+        data-order="8"
+        tabindex="0">
+        <span class="name">Engineering</span>
+        <span class="lvl">Practices</span>
+        </div>
+
+        <div
+        class="node pos-scrum"
+        data-skill="scrum"
+        data-req="practices"
+        data-order="9"
+        tabindex="0">
+        <span class="name">Agile / Scrum</span>
+        <span class="lvl">Process</span>
+        </div>
+
+        <!-- TOOLS -->
+        <div
+        class="node pos-tools"
+        data-skill="tools"
+        data-req="core"
+        data-order="10"
+        tabindex="0">
+        <span class="name">Tools</span>
+        <span class="lvl">Supporting</span>
+        </div>
+
+        <div
+        class="node pos-figma"
+        data-skill="figma"
+        data-req="tools"
+        data-order="11"
+        tabindex="0">
+        <span class="name">Figma</span>
+        </div>
+
+        <div
+        class="node pos-trello"
+        data-skill="trello"
+        data-req="tools"
+        data-order="12"
+        tabindex="0">
+        <span class="name">Trello</span>
+        </div>
+
+        <div
+        class="node pos-miro"
+        data-skill="miro"
+        data-req="tools"
+        data-order="13"
+        tabindex="0">
+        <span class="name">Miro</span>
+        </div>
+
+        <div
+        class="node pos-canva"
+        data-skill="canva"
+        data-req="tools"
+        data-order="14"
+        tabindex="0">
+        <span class="name">Canva</span>
+        </div>
+
+    </div>
+    </section>
+
+
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

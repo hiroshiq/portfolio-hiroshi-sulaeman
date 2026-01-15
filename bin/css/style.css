@@ -1,0 +1,337 @@
+/* =====================
+   GLOBAL DESIGN TOKENS
+   ===================== */
+:root {
+  --bg: #EBEBDF;
+  --surface: #2e9d94;
+  --text: #000000;
+  --muted: #6e6e66;
+  --accent: #2e9d94;
+}
+
+/* =====================
+   CSS RESET
+   ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =====================
+   BASE BODY STYLING
+   ===================== */
+body {
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* =====================
+   LINK
+   ===================== */
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* =====================
+   HEADER & NAVIGATION
+   ===================== */
+header {
+  padding: 1rem 2rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* =====================
+   HERO SECTION
+   ===================== */
+.hero {
+  padding: 4rem 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+}
+
+.hero h2 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.cta {
+  margin-top: 1.5rem;
+}
+
+/* =====================
+   BUTTONS
+   ===================== */
+.btn {
+  padding: 0.6rem 1.2rem;
+  background: var(--accent);
+  color: var(--surface);
+  border: 1px solid var(--accent);
+  margin-right: 0.5rem;
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.btn.secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.btn.secondary:hover {
+  background: rgba(46, 157, 148, 0.08);
+}
+
+/* =====================
+   GENERIC SECTION
+   ===================== */
+section {
+  padding: 3rem 2rem;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* =====================
+   PROJECT GRID
+   ===================== */
+.project-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.skills {
+  text-align: center;
+}
+
+.skills .skill-tree {
+  margin-top: 2rem;
+}
+
+
+/* =====================
+   SKILL TREE GRID
+   ===================== */
+.skill-tree {
+  position: relative;
+  margin-top: 3rem;
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr auto 1fr 1fr 1fr;
+  grid-template-rows: repeat(7, 120px);
+
+  gap: 2rem;
+  align-items: center;
+  justify-items: center;
+}
+
+/* =====================
+   SKILL TREE POSITIONS
+   (TIDAK DIUBAH)
+   ===================== */
+.pos-core { grid-column: 4; grid-row: 3; }
+
+.pos-frontend { grid-column: 3; grid-row: 3; }
+.pos-html { grid-column: 2; grid-row: 2; }
+.pos-css { grid-column: 2; grid-row: 4; }
+.pos-js { grid-column: 2; grid-row: 3; }
+
+.pos-backend { grid-column: 4; grid-row: 2; }
+.pos-mysql { grid-column: 4; grid-row: 1; }
+
+.pos-engineering { grid-column: 4; grid-row: 4; }
+.pos-scrum { grid-column: 4; grid-row: 5; }
+
+.pos-tools { grid-column: 5; grid-row: 3; }
+.pos-figma { grid-column: 5; grid-row: 2; }
+.pos-trello { grid-column: 6; grid-row: 2; }
+.pos-miro { grid-column: 5; grid-row: 4; }
+.pos-canva { grid-column: 6; grid-row: 4; }
+
+/* =====================
+   SVG CONNECTORS (FIXED)
+   ===================== */
+.skill-tree .connectors {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;              /* FIX: pastikan SVG punya viewport */
+  height: 100%;             /* FIX */
+  pointer-events: none;
+
+  z-index: 0;               /* FIX: di bawah node */
+}
+
+.skill-tree .connectors line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+
+  transition: stroke-dashoffset 600ms ease;
+
+  /* FIX: visibility & kontras */
+  stroke-opacity: 0.5;
+  stroke-width: 3.5;
+}
+
+.skill-tree .connectors line.draw {
+  stroke-dashoffset: 0;
+}
+
+/* =====================
+   SKILL NODE (FIXED)
+   ===================== */
+.node {
+  position: relative;
+  width: 84px;
+  height: 84px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text);
+
+  opacity: 0;
+  transform: scale(0.85);
+  transform-origin: center;    /* FIX: stabil bounding box */
+
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+
+  z-index: 1;                  /* FIX: di atas SVG */
+}
+
+.node.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.node:hover {
+  transform: scale(1.05);
+}
+
+.node .name {
+  font-size: 0.85rem;
+  z-index: 2;
+}
+
+.node .lvl {
+  font-size: 0.7rem;
+  opacity: 0.6;
+  z-index: 2;
+}
+
+/* Shape */
+.node::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: var(--surface);
+  clip-path: polygon(
+    30% 0%, 70% 0%, 100% 30%, 100% 70%,
+    70% 100%, 30% 100%, 0% 70%, 0% 30%
+  );
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  z-index: 1;
+}
+
+/* =====================
+   SKILL TREE TEXT COLOR (LOCAL OVERRIDE)
+   ===================== */
+
+/* Semua teks di skill tree jadi hitam */
+.skill-tree {
+  color: #ffffff;
+}
+
+/* Pastikan teks node ikut hitam */
+.skill-tree .node {
+  color: #ffffff;
+}
+
+/* Level text lebih soft tapi tetap hitam */
+.skill-tree .node .lvl {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* =====================
+   SPLASH
+   ===================== */
+#splash {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: grid;
+  place-items: center;
+  z-index: 999;
+  color: #fff;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 4px;
+  background: #e0e0e0;
+  margin-top: 1rem;
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  animation: load 2s linear forwards;
+}
+
+@keyframes load {
+  to { width: 100%; }
+}
+
+/* =====================
+   FOOTER
+   ===================== */
+footer {
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid #222;
+}
+
+/* =====================
+   RESPONSIVE (SAFE)
+   ===================== */
+@media (max-width: 768px) {
+  .skill-tree {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(7, 120px);
+  }
+
+  /* FIX: cegah implicit grid chaos */
+  .pos-canva,
+  .pos-figma,
+  .pos-trello,
+  .pos-miro,
+  .pos-tools {
+    grid-column: auto;
+  }
+}
